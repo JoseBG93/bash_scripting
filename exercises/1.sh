@@ -3,7 +3,7 @@
 
 read -p "Please enter your name: " user_name
 
-if [[ "${user_name,,}" != "jose" ]]; then
+if [[ "${user_name,,}" != "jose" ]]; then # ',,' is used to convert the string to lowercase
     echo "Wrong name"
     exit 1
 else
@@ -12,7 +12,7 @@ else
     # $(tr '[:upper:]' '[:lower:]' <<< ${user_name:1}) - Takes remaining characters, converts to lowercase
     # Result: Any input like "jose", "JOSE", "JoSe" becomes properly formatted "Jose"
     echo "Welcome, $(tr '[:lower:]' '[:upper:]' <<< ${user_name:0:1})$(tr '[:upper:]' '[:lower:]' <<< ${user_name:1})! Type two numbers to add them."
-    read -p "Enter first number: " num_1
+    read -p "Enter first number: " num_1 # '-p' is used to print the prompt before reading the input
     read -p "Enter second number: " num_2
     addition=$((num_1+num_2))
     subtraction=$((num_1-num_2))
